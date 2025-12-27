@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AIGuide - AI模型推荐与提示词优化</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+</head>
+<body>
+    <div class="container">
+        <!-- 头部 -->
+        <header class="header">
+            <div class="logo">
+                <i class="fas fa-robot"></i>
+                <h1>AIGuide</h1>
+            </div>
+            <p class="subtitle">AI模型推荐与提示词优化专家</p>
+        </header>
+
+        <!-- 主界面 -->
+        <main class="main-content">
+            <!-- 左侧：对话区域 -->
+            <div class="chat-section">
+                <div class="chat-header">
+                    <h2><i class="fas fa-comments"></i> 对话</h2>
+                    <div class="session-info" id="sessionInfo">
+                        <span class="iteration-count">第 <span id="iterationCount">0</span> 轮</span>
+                    </div>
+                </div>
+                
+                <div class="chat-container">
+                    <div class="chat-messages" id="chatMessages">
+                        <!-- 消息将在这里动态添加 -->
+                    </div>
+                    
+                    <div class="input-section">
+                        <div class="task-input" id="taskInputSection">
+                            <h3><i class="fas fa-tasks"></i> 请描述您的任务需求</h3>
+                            <textarea id="userTask" placeholder="例如：我需要一个AI帮我写代码/分析文档/创作内容/解答问题等..." rows="4"></textarea>
+                            <button id="startSession" class="btn-primary">
+                                <i class="fas fa-play"></i> 开始分析
+                            </button>
+                        </div>
+                        
+                        <div class="feedback-input" id="feedbackSection" style="display: none;">
+                            <h3><i class="fas fa-comment-dots"></i> 请提供您的反馈</h3>
+                            <div class="feedback-instructions">
+                                <p><i class="fas fa-info-circle"></i> 提示：</p>
+                                <ul>
+                                    <li>如果您完全满意，请说 <strong>"满意"</strong>、<strong>"很好"</strong> 或 <strong>"完成"</strong></li>
+                                    <li>如果您有任何修改意见或新需求，请直接说明</li>
+                                </ul>
+                            </div>
+                            <textarea id="userFeedback" placeholder="请输入您的反馈..." rows="3"></textarea>
+                            <div class="button-group">
+                                <button id="submitFeedback" class="btn-primary">
+                                    <i class="fas fa-paper-plane"></i> 发送反馈
+                                </button>
+                                <button id="exportResults" class="btn-secondary">
+                                    <i class="fas fa-download"></i> 导出结果
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- 右侧：推荐结果区域 -->
+            <div class="results-section">
+                <div class="results-header">
+                    <h2><i class="fas fa-star"></i> 推荐结果</h2>
+                    <div class="model-badge" id="modelBadge">等待推荐...</div>
+                </div>
+                
+                <div class="results-container">
+                    <div class="recommendation-box" id="recommendationBox">
+                        <div class="placeholder">
+                            <i class="fas fa-magic"></i>
+                            <p>AI将在这里展示推荐的模型和优化后的提示词</p>
+                        </div>
+                    </div>
+                    
+                    <div class="status-box" id="statusBox">
+                        <h3><i class="fas fa-history"></i> 会话状态</h3>
+                        <div class="status-content">
+                            <div class="status-item">
+                                <span class="status-label">当前状态：</span>
+                                <span class="status-value" id="currentStatus">等待输入任务</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-label">对话轮次：</span>
+                                <span class="status-value" id="currentIteration">0</span>
+                            </div>
+                            <div class="status-item">
+                                <span class="status-label">推荐模型：</span>
+                                <span class="status-value" id="currentModel">-</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </main>
+
+        <!-- 底部信息 -->
+        <footer class="footer">
+            <p>© 2024 AIGuide - 基于DeepSeek API的AI模型推荐系统</p>
+            <p class="tips"><i class="fas fa-lightbulb"></i> 提示：系统会自动分析您的需求，并根据反馈持续优化推荐</p>
+        </footer>
+    </div>
+
+    <!-- 加载动画 -->
+    <div class="loader" id="loader">
+        <div class="loader-content">
+            <div class="spinner"></div>
+            <p id="loaderText">正在分析您的需求...</p>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
